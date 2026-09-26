@@ -1,2 +1,0 @@
-import type { Vessel,VesselProvider } from '@/core/providers/types';
-export const aisStreamProvider:VesselProvider={id:'aisstream',label:'AISStream Provider',async listVessels():Promise<Vessel[]>{if(!process.env.AISSTREAM_API_KEY) throw new Error('AISSTREAM_API_KEY is not configured. Use VESSEL_PROVIDER=demo until the server-side key is connected.'); throw new Error('Continuous AISStream ingestion is intentionally handled by a long-running collector worker; this UI adapter reads normalized vessel data once that collector is connected.');},async getVessel(){return null;}};
