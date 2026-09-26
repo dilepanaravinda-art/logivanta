@@ -1,0 +1,8 @@
+import type { Vessel,VesselProvider } from '@/core/providers/types';
+const now=(mins:number)=>new Date(Date.now()-mins*60000).toISOString();
+const vessels:Vessel[]=[
+{id:'lv-001',name:'LOGIVANTA DEMO 01',imo:'9811001',mmsi:'563001001',flag:'Singapore',type:'Container Ship',destination:'SGSIN',aisEta:'2026-09-28T06:30:00Z',nextPort:'Singapore',nextPortSource:'Demo Schedule',carrierEta:'2026-09-28T05:50:00Z',position:{lat:6.83,lon:79.94,sog:14.8,cog:132,heading:134,observedAt:now(3),source:'Demo AIS Adapter'}},
+{id:'lv-002',name:'LOGIVANTA DEMO 02',imo:'9811002',mmsi:'636001002',flag:'Liberia',type:'Container Ship',destination:'LKCMB',aisEta:'2026-09-27T22:10:00Z',nextPort:'Colombo',nextPortSource:'Demo Schedule',position:{lat:5.92,lon:82.41,sog:17.2,cog:101,heading:99,observedAt:now(46),source:'Demo AIS Adapter'}},
+{id:'lv-003',name:'LOGIVANTA DEMO 03',imo:'9811003',mmsi:'477001003',flag:'Hong Kong',type:'Container Ship',destination:'SGSIN',aisEta:'2026-09-29T11:45:00Z',nextPort:'Singapore',nextPortSource:'AIS destination',position:{lat:4.65,lon:86.2,sog:16.1,cog:87,heading:88,observedAt:now(190),source:'Demo AIS Adapter'}},
+{id:'lv-004',name:'LOGIVANTA DEMO 04',imo:'9811004',mmsi:'538001004',flag:'Marshall Islands',type:'Container Ship',destination:'AEJEA',nextPort:'Jebel Ali',nextPortSource:'Demo Schedule',position:{lat:7.9,lon:72.4,sog:15.4,cog:292,heading:294,observedAt:now(780),source:'Demo AIS Adapter'}}];
+export const demoProvider:VesselProvider={id:'demo',label:'Demo AIS Provider',async listVessels(){return vessels;},async getVessel(id){return vessels.find(v=>v.id===id)||null;}};
